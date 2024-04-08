@@ -78,6 +78,10 @@ def main(cfg: DictConfig) -> None:
         ######### rollout
         traj_batch, _ = sample_traj(gflownet, cfg, logr_fn_detach,
               batch_size=cfg.batch_size, sigma = cfg.sigma_interactive)
+        
+        if step_idx % 1000 or step_idx == cfg.steps - 1:
+            torch.save(gflownet.state_dict(), f'model{step_idx}.pt')
+
 
         ######### training
         gflownet.train()
