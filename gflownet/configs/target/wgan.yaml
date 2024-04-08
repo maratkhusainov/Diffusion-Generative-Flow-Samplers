@@ -1,5 +1,5 @@
 dataset:
-  _target_: target.distribution.gm.GaussianMixture2D
+  _target_: target.distribution.wgan_density.WGANdens
 
 ndim: 2
 #shape: 2
