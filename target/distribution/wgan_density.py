@@ -8,7 +8,7 @@ sys.path.append('..')
 
 
 class WGANdens(BaseSet):
-    def __init__(self, device, dim=2):
+    def __init__(self, device='cuda', dim=2):
         super().__init__()
         self.device = device
         self.data_ndim = dim
@@ -22,9 +22,9 @@ class WGANdens(BaseSet):
             torch.zeros(2).to(self.device), torch.eye(2).to(self.device))
 
         self.gen_mnist.load_state_dict(torch.load(
-            '/content/target/distribution/mnist_2d_experiments/weights/wgan_2d.ckpt')[0])
+            '/content/Diffusion-Generative-Flow-Samplers/target/distribution/mnist_2d_experiments/weights/wgan_2d.ckpt')[0])
         self.discr_mnist.load_state_dict(torch.load(
-            '/content/gfn-diffusion/energy_sampling/energies/mnist_2d_experiments/weights/wgan_2d.ckpt')[1])
+            '/content/Diffusion-Generative-Flow-Samplers/target/distribution/mnist_2d_experiments/weights/wgan_2d.ckpt')[1])
         self.gen_mnist.eval()
         self.discr_mnist.eval()
 

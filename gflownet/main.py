@@ -48,7 +48,7 @@ def main(cfg: DictConfig) -> None:
     print(f"Work directory: {os.getcwd()}")
 
     data = instantiate(cfg.target.dataset)
-    true_logz = data.gt_logz()
+    true_logz = None #data.gt_logz()
     if true_logz is not None:
         print(f"True logZ={true_logz:.4f}")
     def logr_fn_detach(x):
@@ -79,7 +79,7 @@ def main(cfg: DictConfig) -> None:
         traj_batch, _ = sample_traj(gflownet, cfg, logr_fn_detach,
               batch_size=cfg.batch_size, sigma = cfg.sigma_interactive)
         
-        if step_idx % 1000 or step_idx == cfg.steps - 1:
+        if step_idx % 1000 == 0 or step_idx == cfg.steps - 1:
             torch.save(gflownet.state_dict(), f'model{step_idx}.pt')
 
 

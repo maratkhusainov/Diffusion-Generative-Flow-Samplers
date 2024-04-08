@@ -9,13 +9,13 @@ lr: 1e-4
 zlr: 1e-3
 stlam: 2. # subtb lambda
 wd: 1e-7 # weight decay
-bs: 256
+bs: 64
 
 tstep: 100 # only for transition based buffer
 steps: 5000 # training steps
 log_freq: 20
 eval_freq: 100
-eval_n: 2000 # number of samples for estimating logZ
+eval_n: 20 # number of samples for estimating logZ
 
 dt: 0.01 # step size, h in the paper
 N: 100
